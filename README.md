@@ -3,6 +3,21 @@
 
 **注意：**
 
-Dockerfile中的镜像源仅腾讯云服务器内网可用
+Dockerfile文件中的镜像源仅腾讯云服务器内网可用
 
-配置文件中设置了仅中国IP可访问
+http_top文件中设置了仅中国IP可访问
+
+compose文件中maxmindinc的ID和Key需自填
+
+**运行方法：**
+
+```
+# 创建名为nginx的Docker网络
+sudo docker network create nginx
+
+# 构建并启动Docker容器
+sudo docker compose up --build -d
+
+# 启动Docker容器
+sudo docker compose up -d
+```
