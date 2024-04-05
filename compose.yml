@@ -1,0 +1,40 @@
+services:
+  npm:
+    build:
+      context: .
+    image: nginx-proxy-manager
+    container_name: npm
+    depends_on:
+      - geoip2
+    ports:
+      - 0.0.0.0:80:80
+      - 0.0.0.0:443:443
+      - 0.0.0.0:81:81
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    environment:
+      - DISABLE_IPV6=true
+      - TZ=Asia/Shanghai
+    networks:
+      - nginx
+    restart: unless-stopped
+
+  geoip2:
+    image: maxmindinc/geoipupdate
+    container_name: geoip2
+    volumes:
+      - ./data/geoip2:/usr/share/GeoIP
+    environment:
+      - GEOIPUPDATE_ACCOUNT_ID=******
+      - GEOIPUPDATE_LICENSE_KEY=****************************************
+      - 'GEOIPUPDATE_EDITION_IDS=GeoLite2-City GeoLite2-Country GeoLite2-ASN'
+      - GEOIPUPDATE_FREQUENCY=24
+      - GEOIPUPDATE_PRESERVE_FILE_TIMES=1
+    networks:
+      - nginx
+    restart: unless-stopped
+
+networks:
+  nginx:
+    external: true
