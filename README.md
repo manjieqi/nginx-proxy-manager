@@ -15,8 +15,8 @@ compose文件中maxmindinc的ID和Key需自填
 # 创建名为nginx的Docker网络
 sudo docker network create nginx
 
-# 构建并启动Docker容器
-sudo docker compose up --build -d
+# 构建镜像(可选，需修改compose文件中对应镜像)
+sudo docker build -t nginx-proxy-manager ./build
 
 # 启动Docker容器
 sudo docker compose up -d

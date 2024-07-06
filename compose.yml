@@ -1,8 +1,6 @@
 services:
   npm:
-    build:
-      context: .
-    image: nginx-proxy-manager
+    image: manjieqi/nginx-proxy-manager
     container_name: npm
     depends_on:
       - geoip2
