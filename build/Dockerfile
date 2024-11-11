@@ -1,7 +1,8 @@
 FROM jc21/nginx-proxy-manager
 
 # 复制配置文件到容器中
-COPY http_top.conf server_proxy.conf /data/nginx/custom/
+COPY http_top.conf /data/nginx/custom/
+COPY server_proxy.conf /data/nginx/custom/
 COPY geoip2.conf /etc/nginx/modules/
 
 # 设置Python包的镜像源，并安装zope和certbot-dns-dnspod
