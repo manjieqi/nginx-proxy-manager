@@ -1,7 +1,6 @@
 FROM jc21/nginx-proxy-manager
 
 # 复制配置文件到容器中
-RUN mkdir -p /data/nginx/custom/
 COPY http_top.conf server_proxy.conf /data/nginx/custom/
 COPY geoip2.conf /etc/nginx/modules/
 
