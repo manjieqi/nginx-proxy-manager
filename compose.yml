@@ -2,6 +2,7 @@ services:
   npm:
     image: manjieqi/nginx-proxy-manager
     container_name: npm
+    restart: unless-stopped
     depends_on:
       - geoip2
     ports:
@@ -16,11 +17,11 @@ services:
       - DISABLE_IPV6=true
     networks:
       - nginx
-    restart: unless-stopped
 
   geoip2:
     image: maxmindinc/geoipupdate
     container_name: geoip2
+    restart: unless-stopped
     volumes:
       - ./data/geoip2:/usr/share/GeoIP
     environment:
@@ -32,7 +33,6 @@ services:
       - GEOIPUPDATE_PRESERVE_FILE_TIMES=1
     networks:
       - nginx
-    restart: unless-stopped
 
 networks:
   nginx:
