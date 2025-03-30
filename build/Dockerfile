@@ -5,7 +5,7 @@ COPY http_top.conf server_proxy.conf root_top.conf /data/nginx/custom/
 
 # 设置Python包的镜像源，并安装zope和certbot-dns-dnspod
 RUN source /opt/certbot/bin/activate && \
-    pip install --no-cache-dir zope certbot-dns-dnspod certbot-dns-cloudflare && \
+    pip install --no-cache-dir certbot-dns-dnspod certbot-dns-cloudflare && \
     # pip config set global.index-url https://mirrors.tencentyun.com/pypi/simple && \
     deactivate
 
