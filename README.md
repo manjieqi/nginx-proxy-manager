@@ -1,5 +1,5 @@
 # 自定义 Nginx Proxy Manager
-预安装zope、certbot-dns-dnspod和certbot-dns-cloudflare，并且启用geoip2
+预安装certbot-dns-dnspod和certbot-dns-cloudflare，并且启用geoip2
 
 **注意：**
 
