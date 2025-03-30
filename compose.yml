@@ -2,7 +2,6 @@ services:
   npm:
     image: manjieqi/nginx-proxy-manager
     container_name: npm
-    restart: unless-stopped
     depends_on:
       - geoip2
     ports:
@@ -15,13 +14,13 @@ services:
     environment:
       - TZ=Asia/Shanghai
       - DISABLE_IPV6=true
+    restart: unless-stopped
     networks:
       - nginx
 
   geoip2:
     image: maxmindinc/geoipupdate
     container_name: geoip2
-    restart: unless-stopped
     volumes:
       - ./data/geoip2:/usr/share/GeoIP
     environment:
@@ -31,6 +30,7 @@ services:
       - 'GEOIPUPDATE_EDITION_IDS=GeoLite2-City GeoLite2-Country GeoLite2-ASN'
       - GEOIPUPDATE_FREQUENCY=24
       - GEOIPUPDATE_PRESERVE_FILE_TIMES=1
+    restart: unless-stopped
     networks:
       - nginx
 
